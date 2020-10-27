@@ -1,0 +1,42 @@
+{
+  "name": "sortable-element",
+  "version": "0.1.0",
+  "description": "Web component. Sorts a list / grid using drag & drop.",
+  "main": "src/sortable-element.js",
+  "scripts": {
+    "start": "es-dev-server --http2 --open --watch",
+    "format": "eslint --ext .js . --fix --ignore-path .gitignore"
+  },
+  "author": "Wouter Vroege",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "es-dev-server": "^1.57.8",
+    "husky": "^4.2.3",
+    "release-it": "^13.5.1"
+  },
+  "homepage": "https://github.com/woutervroege/sortable-element#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woutervroege/sortable-element.git"
+  },
+  "bugs": {
+    "url": "https://github.com/woutervroege/sortable-element/issues"
+  },
+  "files": [
+    "src/sortable-element.js"
+  ],
+  "keywords": [
+    "sort",
+    "sortable",
+    "drag",
+    "drop",
+    "component",
+    "element"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format"
+    }
+  }
+}

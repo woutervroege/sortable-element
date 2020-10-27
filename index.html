@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sortable-element demo</title>
+</head>
+<body>
+
+  <style>
+    sortable-element {
+      width: 100%;
+    }
+
+    div {
+      background: var(--bg);
+      height: 300px;
+      border: 2px solid black;  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #222;
+    }
+
+    span {
+      font-size: 72px;
+      font-family: sans-serif;
+      color: white;
+    }
+  </style>
+
+  <input type="range" min="1" max="10" value="3" id="columnSlider">
+
+  <sortable-element id="grid">
+    <div><span>1</span></div>
+    <div><span>2</span></div>
+    <div><span>3</span></div>
+    <div><span>4</span></div>
+    <div><span>5</span></div>
+    <div><span>6</span></div>
+    <div><span>7</span></div>
+    <div><span>8</span></div>
+  </sortable-element>
+
+  <script type="module" src="src/sortable-element.js"></script>
+
+  <script>
+    columnSlider.addEventListener('input', e => {
+      grid.style.setProperty('--sortable-element--columns', e.target.value);
+    })
+    grid.addEventListener('sort', e => console.info('sort!'))
+  </script>
+  
+</body>
+</html>
