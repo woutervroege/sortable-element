@@ -1,6 +1,6 @@
 {
   "name": "sortable-element",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Web component. Sorts a list / grid using drag & drop.",
   "main": "src/sortable-element.js",
   "scripts": {
