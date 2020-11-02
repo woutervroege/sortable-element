@@ -127,8 +127,8 @@ class SortableElement extends HTMLElement {
       item.style.setProperty('--__item--order', i);
     });
 
-    this.dispatchEvent(new CustomEvent('sort'));
     window.setTimeout(() => this.style.setProperty('--__item--transition-duration', ''), 100);
+    this.dispatchEvent(new CustomEvent('sort', {bubbles: true, composed: true}));
   }
 
 }
