@@ -119,13 +119,12 @@ class SortableElement extends HTMLElement {
     this.style.setProperty('--__item--transition-duration', 0);
 
     this.sortedChildren.forEach((item, i) => {
-      item.style.setProperty('--__item--translateX', '');
-      item.style.setProperty('--__item--translateY', '');
-      item.style.setProperty('--__item--order', i);
+      item.style.setProperty('transform', '');
+      item.style.setProperty('order', i);
     });
 
     window.setTimeout(() => this.style.setProperty('--__item--transition-duration', ''), 100);
-    this.dispatchEvent(new CustomEvent('sort', {bubbles: true, composed: true}));
+    this.dispatchEvent(new CustomEvent('sort'));
   }
 
 }
