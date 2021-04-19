@@ -10,8 +10,6 @@ class SortableElement extends HTMLElement {
 
       ::slotted(*) {
         transition: var(--__item--transition-duration, 200ms) transform ease;
-        transform: translate(var(--__item--translateX), var(--__item--translateY));
-        order: var(--__item--order);
       }
     `;
     return css;
@@ -105,8 +103,7 @@ class SortableElement extends HTMLElement {
       translateY = this._siblings[i-1].bounds.top - this._siblings[i].bounds.top;
     }
 
-    this._siblings[i].node.style.setProperty('--__item--translateX', `${translateX}px`);
-    this._siblings[i].node.style.setProperty('--__item--translateY', `${translateY}px`);
+    this._siblings[i].node.style.setProperty('transform', `translate(${translateX}px, ${translateY}px)`);
 
   }
 
