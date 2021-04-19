@@ -27,15 +27,13 @@
     "url": "https://github.com/woutervroege/sortable-element/issues"
   },
   "files": [
-    "src/sortable-element.js"
+    "src/sortable.js"
   ],
   "keywords": [
     "sort",
     "sortable",
     "drag",
-    "drop",
-    "component",
-    "element"
+    "drop"
   ],
   "husky": {
     "hooks": {

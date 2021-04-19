@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>sortable-element demo</title>
+  <title>sortable/demo</title>
 </head>
 <body>
 
   <style>
-    sortable-element {
+    section {
       width: 100%;
+      display: grid;
+      grid-template-columns: repeat(var(--columns, 3), 1fr);
+      grid-gap: 16px;
     }
 
     div {
@@ -29,9 +32,13 @@
     }
   </style>
 
-  <input type="range" min="1" max="10" value="3" id="columnSlider">
+  <p>
+    <input type="range" min="1" max="10" value="3" id="columnSlider">
 
-  <sortable-element id="grid">
+    <label><input type="checkbox" checked id="toggle">On/Off</label>
+  </p>
+
+  <section id="grid">
     <div><span>1</span></div>
     <div><span>2</span></div>
     <div><span>3</span></div>
@@ -40,16 +47,23 @@
     <div><span>6</span></div>
     <div><span>7</span></div>
     <div><span>8</span></div>
-  </sortable-element>
+    <div><span>9</span></div>
+  </section>
 
-  <script type="module" src="src/sortable-element.js"></script>
+  <script type="module">
+    import { Sortable } from '../src/sortable.js';
 
-  <script>
-    columnSlider.addEventListener('input', e => {
-      grid.style.setProperty('--sortable-element--columns', e.target.value);
+    let instance = new Sortable(grid);
+
+    toggle.addEventListener('change', () => {
+      if(toggle.checked) instance = new Sortable(grid);
+      else instance.destroy();
     })
-    grid.addEventListener('sort', e => console.info('sort!'))
+
+    columnSlider.addEventListener('input', e => document.body.style.setProperty('--columns', e.target.value));
+    grid.addEventListener('sort', (e) => console.info('sort', e.detail.children));
+    
   </script>
-  
+
 </body>
 </html>
