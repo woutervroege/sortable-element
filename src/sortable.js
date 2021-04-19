@@ -118,15 +118,12 @@ export class Sortable {
     [...this.__element.children].forEach(item => item.draggable = true);
 
     this.__sortedChildren.forEach((item, i) => {
-      item.style.setProperty('transition', 'none');
+      item.style.setProperty('transition-duration', '0ms');
       item.style.setProperty('transform', '');
       item.style.setProperty('order', i);
     });
 
-    window.setTimeout(() => {
-      this.__sortedChildren.forEach((item) => item.style.setProperty('transition', '200ms transform ease'));
-    });
-      
+    this.__sortedChildren.forEach((item) => item.style.setProperty('transition-duration', ''));
     this.__element.dispatchEvent(new CustomEvent('sort', {detail: {children: this.__sortedChildren}}));
   }
 

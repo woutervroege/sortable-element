@@ -12,7 +12,7 @@
       width: 100%;
       display: grid;
       grid-template-columns: repeat(var(--columns, 3), 1fr);
-      grid-gap: 16px;
+      gap: 12px;
     }
 
     div {
@@ -23,6 +23,15 @@
       justify-content: center;
       align-items: center;
       background: #222;
+    }
+
+    div[draggable] {
+      transition: 200ms transform ease;
+      cursor: grab;
+    }
+
+    div[draggable]:active {
+      cursor: grabbing;
     }
 
     span {
@@ -38,7 +47,7 @@
     <label><input type="checkbox" checked id="toggle">On/Off</label>
   </p>
 
-  <section id="grid">
+  <section id="demo">
     <div><span>1</span></div>
     <div><span>2</span></div>
     <div><span>3</span></div>
@@ -53,15 +62,15 @@
   <script type="module">
     import { Sortable } from '../src/sortable.js';
 
-    let instance = new Sortable(grid);
+    let instance = new Sortable(demo);
 
     toggle.addEventListener('change', () => {
-      if(toggle.checked) instance = new Sortable(grid);
+      if(toggle.checked) instance = new Sortable(demo);
       else instance.destroy();
     })
 
     columnSlider.addEventListener('input', e => document.body.style.setProperty('--columns', e.target.value));
-    grid.addEventListener('sort', (e) => console.info('sort', e.detail.children));
+    demo.addEventListener('sort', (e) => console.info('sort', e.detail.children));
     
   </script>
 
