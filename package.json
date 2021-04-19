@@ -12,7 +12,10 @@
   "dependencies": {},
   "devDependencies": {
     "es-dev-server": "^1.57.8",
+    "eslint": "^7.24.0",
+    "format": "eslint --ext .js src --fix --ignore-path .eslintignore",
     "husky": "^4.2.3",
+    "lint": "eslint --ext .js src --ignore-path .eslintignore",
     "release-it": "^13.5.1"
   },
   "homepage": "https://github.com/woutervroege/sortable-element#readme",
